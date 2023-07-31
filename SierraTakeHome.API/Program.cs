@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using SierraTakeHome.Core.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Add dbContext, here you can we are using In-memory database.
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("SierraTakeHomeDB"));
 
 var app = builder.Build();
 

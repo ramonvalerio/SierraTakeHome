@@ -1,4 +1,6 @@
-﻿namespace SierraTakeHome.Core.Models.Orders
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SierraTakeHome.Core.Models.Orders
 {
     public class Order
     {
