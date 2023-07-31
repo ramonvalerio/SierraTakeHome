@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SierraTakeHome.API", "Sierr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraTakeHome.Core", "SierraTakeHome.Core\SierraTakeHome.Core.csproj", "{F1F34254-526E-46DC-964B-55E49B5B3317}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraTakeHome.Application", "SierraTakeHome.Application\SierraTakeHome.Application.csproj", "{9891C7CE-8518-4EF8-B8F6-3CCD711133DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F1F34254-526E-46DC-964B-55E49B5B3317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1F34254-526E-46DC-964B-55E49B5B3317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1F34254-526E-46DC-964B-55E49B5B3317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9891C7CE-8518-4EF8-B8F6-3CCD711133DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9891C7CE-8518-4EF8-B8F6-3CCD711133DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9891C7CE-8518-4EF8-B8F6-3CCD711133DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9891C7CE-8518-4EF8-B8F6-3CCD711133DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
