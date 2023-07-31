@@ -1,24 +1,25 @@
 ﻿using SierraTakeHome.Core.Models.Products;
+using SierraTakeHome.Core.Repositories;
 
 namespace SierraTakeHome.Core.Applications.Products
 {
     public class ProductAppService : IProductAppService
     {
-        private readonly IProductRepository _repository;
+        private readonly IUnitOfWork _repository;
 
-        public ProductAppService(IProductRepository repository)
+        public ProductAppService(IUnitOfWork repository)
         {
             _repository = repository;
         }
 
         public async Task<List<Product>> GetAll()
         {
-            return await _repository.GetAll();
+            return await _repository.Products.GetAll();
         }
 
         public async Task<Product> GetById(int id)
         {
-            return await _repository.GetById(id);
+            return await _repository.Products.GetById(id);
         }
     }
 }
