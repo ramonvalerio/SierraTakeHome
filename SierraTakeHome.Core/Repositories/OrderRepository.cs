@@ -1,49 +1,37 @@
-﻿namespace SierraTakeHome.Core.Repositories
+﻿using Microsoft.EntityFrameworkCore;
+using SierraTakeHome.Core.Data;
+using SierraTakeHome.Core.Models.Orders;
+using System.Data.SqlClient;
+
+namespace SierraTakeHome.Core.Repositories
 {
-    using SierraTakeHome.Core.Models.Orders;
-    //using Microsoft.EntityFrameworkCore;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    public class OrderRepository
+    public class OrderRepository : IOrderRepository
     {
-        //private readonly DbContext _context;
+        private readonly DataContext _context;
 
-        //public OrderRepository(DbContext context)
-        //{
-        //    _context = context;
-        //}
+        public OrderRepository(DataContext context)
+        {
+            _context = context;
+        }
 
-        //public async Task<IEnumerable<Order>> GetAllAsync()
-        //{
-        //    return await _context.Set<Order>().ToListAsync();
-        //}
+        public async Task<List<Order>> GetAll()
+        {
+            return await _context.Orders.ToListAsync();
+        }
 
-        //public async Task<Order> GetByIdAsync(int id)
-        //{
-        //    return await _context.Set<Order>().FindAsync(id);
-        //}
+        public async Task<Order> GetById(int id)
+        {
+            return await _context.Orders.SingleOrDefaultAsync(x => x.Id == id);
+        }
+        
+        public async Task<int> Create(Order order)
+        {
+            var customerIdParam = new SqlParameter("@CustomerID", order.CustomerID);
+            var productIdParam = new SqlParameter("@ProductID", order.ProductId);
+            var quantityParam = new SqlParameter("@Quantity", order.Quantity);
 
-        //public async Task CreateAsync(Order order)
-        //{
-        //    _context.Set<Order>().Add(order);
-        //    await _context.SaveChangesAsync();
-        //}
-
-        //public async Task UpdateAsync(Order order)
-        //{
-        //    _context.Set<Order>().Update(order);
-        //    await _context.SaveChangesAsync();
-        //}
-
-        //public async Task DeleteAsync(int id)
-        //{
-        //    var order = await GetByIdAsync(id);
-        //    if (order != null)
-        //    {
-        //        _context.Set<Order>().Remove(order);
-        //        await _context.SaveChangesAsync();
-        //    }
-        //}
+            return await _context.Database.ExecuteSqlRawAsync("EXEC CreateOrder @CustomerID, @ProductID, @Quantity",
+                customerIdParam, productIdParam, quantityParam);
+        }
     }
 }

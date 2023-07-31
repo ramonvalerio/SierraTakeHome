@@ -1,48 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SierraTakeHome.Core.Data;
 using SierraTakeHome.Core.Models.Products;
-using System.Linq;
 
 namespace SierraTakeHome.Core.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly DbContext _context;
+        private readonly DataContext _context;
 
-        public ProductRepository(DbContext context)
+        public ProductRepository(DataContext context)
         {
             _context = context;
         }
 
-        public Product GetById(int id)
+        public async Task<List<Product>> GetAll()
         {
-            return _context.Set<Product>().Find(id);
+            return await _context.Products.ToListAsync();
         }
 
-        public void Add(Product product)
+        public async Task<Product> GetById(int id)
         {
-            _context.Set<Product>().Add(product);
-            _context.SaveChanges();
-        }
-
-        public void Update(Product product)
-        {
-            _context.Entry(product).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            var product = GetById(id);
-            if (product != null)
-            {
-                _context.Set<Product>().Remove(product);
-                _context.SaveChanges();
-            }
-        }
-
-        public IQueryable<Product> GetAll()
-        {
-            return _context.Set<Product>().AsQueryable();
+            return await _context.Products.SingleOrDefaultAsync(x => x.Id == id);
         }
     }
 }

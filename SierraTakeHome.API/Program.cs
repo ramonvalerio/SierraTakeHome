@@ -10,8 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Add dbContext, here you can we are using In-memory database.
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("SierraTakeHomeDB"));
+//Add dbContext and ConnectionString
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseSqlServer(connectionString);
+});
 
 var app = builder.Build();
 
@@ -23,9 +27,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
