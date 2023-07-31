@@ -2,8 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using SierraTakeHome.Core.Applications.Orders;
 using SierraTakeHome.Core.Applications.Products;
 using SierraTakeHome.Core.Data;
-using SierraTakeHome.Core.Models.Orders;
-using SierraTakeHome.Core.Models.Products;
 using SierraTakeHome.Core.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,11 +21,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 
 builder.Services.AddScoped<IProductAppService, ProductAppService>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-
 builder.Services.AddScoped<IOrderAppService, OrderAppService>();
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
