@@ -1,5 +1,5 @@
-﻿using SierraTakeHome.Core.Models.Orders;
-using SierraTakeHome.Core.Repositories;
+﻿using SierraTakeHome.Core.Data;
+using SierraTakeHome.Core.Models.Orders;
 
 namespace SierraTakeHome.Core.Applications.Orders
 {
@@ -22,8 +22,14 @@ namespace SierraTakeHome.Core.Applications.Orders
             return await _repository.Orders.GetById(id);
         }
 
-        public async Task<int> Create(Order order)
+        public async Task<int> Create(OrderDTO dto)
         {
+            var order = new Order { 
+                CustomerID = dto.CustomerID,
+                ProductId = dto.ProductId,
+                Quantity = dto.Quantity
+            };
+
             return await _repository.Orders.Create(order);
         }
     }

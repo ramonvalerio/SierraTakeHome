@@ -1,5 +1,5 @@
-﻿using SierraTakeHome.Core.Models.Products;
-using SierraTakeHome.Core.Repositories;
+﻿using SierraTakeHome.Core.Data;
+using SierraTakeHome.Core.Models.Products;
 
 namespace SierraTakeHome.Core.Applications.Products
 {

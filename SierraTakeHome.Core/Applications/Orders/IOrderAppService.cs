@@ -8,6 +8,6 @@ namespace SierraTakeHome.Core.Applications.Orders
 
         Task<Order> GetById(int id);
 
-        Task<int> Create(Order order);
+        Task<int> Create(OrderDTO order);
     }
 }

@@ -31,9 +31,10 @@ namespace SierraTakeHome.API.Controllers
 
         // POST api/<OrderController>
         [HttpPost]
-        public async Task Post([FromBody] string value)
+        public async Task Post([FromBody] OrderDTO value)
         {
-            new NotImplementedException();
+            var result = await _appService.Create(value);
+            Ok(result);
         }
     }
 }
