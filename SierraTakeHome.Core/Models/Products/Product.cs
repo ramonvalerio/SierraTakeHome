@@ -1,4 +1,4 @@
-﻿namespace SierraTakeHome.Core.Domain.Products
+﻿namespace SierraTakeHome.Core.Models.Products
 {
     public class Product
     {

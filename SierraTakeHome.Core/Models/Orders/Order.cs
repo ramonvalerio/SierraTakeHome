@@ -1,4 +1,4 @@
-﻿namespace SierraTakeHome.Core.Domain.Orders
+﻿namespace SierraTakeHome.Core.Models.Orders
 {
     public class Order
     {
