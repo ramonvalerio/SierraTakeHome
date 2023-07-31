@@ -1,42 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SierraTakeHome.Core.Applications.Orders;
+using SierraTakeHome.Core.Models.Orders;
 
 namespace SierraTakeHome.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class OrderController : ControllerBase
     {
-        // GET: api/<OrderController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IOrderAppService _appService;
+
+        public OrderController(IOrderAppService appService)
         {
-            return new string[] { "value1", "value2" };
+            _appService = appService;
         }
 
-        // GET api/<OrderController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet]
+        public async Task<ActionResult<List<Order>>> Get()
         {
-            return "value";
+            var result = await _appService.GetAll();
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> Get(int id)
+        {
+            var result = await _appService.GetById(id);
+            return Ok(result);
         }
 
         // POST api/<OrderController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task Post([FromBody] string value)
         {
-        }
-
-        // PUT api/<OrderController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<OrderController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            new NotImplementedException();
         }
     }
 }

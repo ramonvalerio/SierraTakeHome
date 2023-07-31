@@ -1,42 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SierraTakeHome.Core.Applications.Products;
+using SierraTakeHome.Core.Models.Products;
 
 namespace SierraTakeHome.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class ProductController : ControllerBase
     {
-        // GET: api/<ProductController>
+        private readonly IProductAppService _appService;
+
+        public ProductController(IProductAppService appService)
+        {
+            _appService = appService;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<List<Product>>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = await _appService.GetAll();
+            return Ok(result);
         }
 
-        // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Product>> Get(int id)
         {
-            return "value";
-        }
-
-        // POST api/<ProductController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var result = await _appService.GetById(id);
+            return Ok(result);
         }
     }
 }
