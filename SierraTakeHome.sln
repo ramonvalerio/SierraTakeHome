@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SierraTakeHome.API", "SierraTakeHome.API\SierraTakeHome.API.csproj", "{D43CFF97-6846-4C65-8BC4-F490AB8098C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraTakeHome.Core", "SierraTakeHome.Core\SierraTakeHome.Core.csproj", "{F1F34254-526E-46DC-964B-55E49B5B3317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SierraTakeHome.Core", "SierraTakeHome.Core\SierraTakeHome.Core.csproj", "{F1F34254-526E-46DC-964B-55E49B5B3317}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraTakeHome.Core.Test", "SierraTakeHome.Core.Test\SierraTakeHome.Core.Test.csproj", "{174E73A9-2159-4BE6-B710-F7C76B53EBB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F1F34254-526E-46DC-964B-55E49B5B3317}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1F34254-526E-46DC-964B-55E49B5B3317}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1F34254-526E-46DC-964B-55E49B5B3317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{174E73A9-2159-4BE6-B710-F7C76B53EBB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174E73A9-2159-4BE6-B710-F7C76B53EBB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174E73A9-2159-4BE6-B710-F7C76B53EBB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174E73A9-2159-4BE6-B710-F7C76B53EBB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
