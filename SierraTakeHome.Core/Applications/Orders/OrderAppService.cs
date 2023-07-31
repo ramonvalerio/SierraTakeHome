@@ -4,21 +4,26 @@ namespace SierraTakeHome.Core.Applications.Orders
 {
     public class OrderAppService : IOrderAppService
     {
-        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderRepository _repository;
 
-        public OrderAppService(IOrderRepository orderRepository)
+        public OrderAppService(IOrderRepository repository)
         {
-            _orderRepository = orderRepository;
+            _repository = repository;
         }
 
-        Task<List<Order>> IOrderAppService.GetAll()
+        public async Task<List<Order>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _repository.GetAll();
         }
 
-        Task<Order> IOrderAppService.GetById(int id)
+        public async Task<Order> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.GetById(id);
+        }
+
+        public async Task<int> Create(Order order)
+        {
+            return await _repository.Create(order);
         }
     }
 }

@@ -4,21 +4,21 @@ namespace SierraTakeHome.Core.Applications.Products
 {
     public class ProductAppService : IProductAppService
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductRepository _repository;
 
-        public ProductAppService(IProductRepository productRepository)
+        public ProductAppService(IProductRepository repository)
         {
-            _productRepository = productRepository;
+            _repository = repository;
         }
 
         public async Task<List<Product>> GetAll()
         {
-            return await _productRepository.GetAll();
+            return await _repository.GetAll();
         }
 
         public async Task<Product> GetById(int id)
         {
-            return await _productRepository.GetById(id);
+            return await _repository.GetById(id);
         }
     }
 }

@@ -7,5 +7,7 @@ namespace SierraTakeHome.Core.Applications.Orders
         Task<List<Order>> GetAll();
 
         Task<Order> GetById(int id);
+
+        Task<int> Create(Order order);
     }
 }
