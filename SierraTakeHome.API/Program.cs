@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using SierraTakeHome.Core.Applications.Orders;
 using SierraTakeHome.Core.Applications.Products;
 using SierraTakeHome.Core.Data;
-using SierraTakeHome.Core.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

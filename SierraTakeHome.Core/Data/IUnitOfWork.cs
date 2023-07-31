@@ -1,14 +1,14 @@
 ﻿using SierraTakeHome.Core.Models.Orders;
 using SierraTakeHome.Core.Models.Products;
 
-namespace SierraTakeHome.Core.Repositories
+namespace SierraTakeHome.Core.Data
 {
     public interface IUnitOfWork : IDisposable
     {
         IOrderRepository Orders { get; }
-
         IProductRepository Products { get; }
-
-        Task<int> CommitAsync();
+        Task CommitAsync();
+        Task BeginTransactionAsync();
+        Task RollbackAsync();
     }
 }
