@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SierraTakeHome.Application\SierraTakeHome.Application.csproj" />
+    <ProjectReference Include="..\SierraTakeHome.Core\SierraTakeHome.Core.csproj" />
   </ItemGroup>
 
 </Project>
