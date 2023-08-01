@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SierraTakeHome.Core.Models.Customers;
 using SierraTakeHome.Core.Models.Orders;
 using SierraTakeHome.Core.Models.Products;
 
@@ -16,8 +17,9 @@ namespace SierraTakeHome.Core.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>().ToTable("TB_ORDER");
             modelBuilder.Entity<Product>().ToTable("TB_PRODUCT");
+            modelBuilder.Entity<Customer>().ToTable("TB_CUSTOMER");
+            modelBuilder.Entity<Order>().ToTable("TB_ORDER");
         }
     }
 }
