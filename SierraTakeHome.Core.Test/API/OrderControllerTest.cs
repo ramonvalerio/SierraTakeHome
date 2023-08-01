@@ -10,7 +10,8 @@ namespace SierraTakeHome.Core.Test.API
 
         public OrderControllerTest()
         {
-            var unitOfWork = new UnitOfWork(null);
+            var context = new DataContext(null);
+            var unitOfWork = new UnitOfWork(context);
             var appService = new OrderAppService(unitOfWork);
             _controller = new OrderController(appService);
         }
@@ -19,7 +20,8 @@ namespace SierraTakeHome.Core.Test.API
         public void CreateOrder()
         {
             // Arrange
-            var command = new OrderCommand();
+            var command = new OrderCommand 
+            { CustomerId = 1, ProductId = 2, Quantity = 5 };
 
             // Act
             var result = _controller.Post(command);
