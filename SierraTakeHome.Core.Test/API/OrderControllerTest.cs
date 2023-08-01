@@ -21,6 +21,43 @@ namespace SierraTakeHome.Core.Test.API
         }
 
         [Fact]
+        public void GetAll_Orders()
+        {
+            // Arrange
+            var appService = new OrderAppService(_unitOfWork);
+            var controller = new OrderController(appService);
+
+            // Fake objects
+            var orders = A.Fake<List<Order>>();
+            A.CallTo(() => _unitOfWork.Orders.GetAll()).Returns(orders);
+
+            // Act
+            var result = controller.Get();
+
+            // Assert
+            result.Result.Result.Should().BeOfType<OkObjectResult>();
+        }
+
+        [Fact]
+        public void GetById_Order()
+        {
+            // Arrange
+            var appService = new OrderAppService(_unitOfWork);
+            var controller = new OrderController(appService);
+
+            // Fake objects
+            var orderId = 1;
+            var order = A.Fake<Order>();
+            A.CallTo(() => _unitOfWork.Orders.GetById(orderId)).Returns(order);
+
+            // Act
+            var result = controller.Get();
+
+            // Assert
+            result.Result.Result.Should().BeOfType<OkObjectResult>();
+        }
+
+        [Fact]
         public void CreateOrder_Valid_Command()
         {
             // Arrange
