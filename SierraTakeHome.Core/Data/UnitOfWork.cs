@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using SierraTakeHome.Core.Models.Customers;
 using SierraTakeHome.Core.Models.Orders;
 using SierraTakeHome.Core.Models.Products;
 using SierraTakeHome.Core.Repositories;
@@ -10,13 +11,15 @@ namespace SierraTakeHome.Core.Data
         private readonly DataContext _context;
         private IDbContextTransaction _transaction;
 
-        public IOrderRepository Orders { get; private set; }
         public IProductRepository Products { get; private set; }
+        public ICustomerRepository Customers { get; private set; }
+        public IOrderRepository Orders { get; private set; }
 
         public UnitOfWork(DataContext context)
         {
-            Orders = new OrderRepository(context);
             Products = new ProductRepository(context);
+            Customers = new CustomerRepository(context);
+            Orders = new OrderRepository(context);
         }
 
         public async Task CommitAsync()

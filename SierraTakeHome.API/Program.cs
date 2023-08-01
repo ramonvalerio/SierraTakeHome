@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SierraTakeHome.Core.Applications.Customers;
 using SierraTakeHome.Core.Applications.Orders;
 using SierraTakeHome.Core.Applications.Products;
 using SierraTakeHome.Core.Data;
@@ -20,6 +21,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 
 builder.Services.AddScoped<IProductAppService, ProductAppService>();
+builder.Services.AddScoped<ICustomerAppService, CustomerAppService>();
 builder.Services.AddScoped<IOrderAppService, OrderAppService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

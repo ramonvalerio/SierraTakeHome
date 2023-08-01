@@ -12,8 +12,9 @@ namespace SierraTakeHome.Core.Data
             
         }
 
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; private set; }
+        public DbSet<Customer> Customers { get; private set; }
+        public DbSet<Order> Orders { get; private set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

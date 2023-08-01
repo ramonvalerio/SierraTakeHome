@@ -22,7 +22,7 @@ namespace SierraTakeHome.Core.Applications.Orders
             return await _repository.Orders.GetById(id);
         }
 
-        public async Task<int> Create(OrderDTO dto)
+        public async Task Create(OrderCommand dto)
         {
             var product = await _repository.Products.GetById(dto.ProductId);
 
@@ -35,7 +35,7 @@ namespace SierraTakeHome.Core.Applications.Orders
                 Quantity = dto.Quantity
             };
 
-            return await _repository.Orders.Create(order);
+            await _repository.Orders.Create(order);
         }
     }
 }
