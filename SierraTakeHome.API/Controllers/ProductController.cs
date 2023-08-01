@@ -18,15 +18,29 @@ namespace SierraTakeHome.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Product>>> Get()
         {
-            var result = await _appService.GetAll();
-            return Ok(result);
+            try
+            {
+                var result = await _appService.GetAll();
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> Get(int id)
         {
-            var result = await _appService.GetById(id);
-            return Ok(result);
+            try
+            {
+                var result = await _appService.GetById(id);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
     }
 }
