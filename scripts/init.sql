@@ -12,6 +12,12 @@ CREATE TABLE TB_PRODUCT (
 )
 GO
 
+CREATE TABLE TB_CUSTOMER (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(255) NOT NULL
+)
+GO
+
 CREATE TABLE TB_ORDER (
     Id INT PRIMARY KEY IDENTITY(1,1),
     CustomerID INT NOT NULL,
@@ -23,27 +29,15 @@ CREATE TABLE TB_ORDER (
 GO
 
 -- Insert data
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product1', 100.50);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product2', 200.25);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product3', 150.75);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product4', 300.40);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product5', 50.10);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product6', 60.60);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product7', 120.80);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product8', 220.90);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product9', 130.00);
-INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product10', 240.30);
+INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product 1', 10.00);
+INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product 2', 20.25);
+INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product 3', 30.50);
+INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product 4', 50.75);
+INSERT INTO TB_PRODUCT (Name, Price) VALUES ('Product 5', 100.00);
 
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (101, 1, 2, 201);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (102, 2, 3, 601);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (103, 3, 1, 151);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (104, 4, 5, 1502);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (105, 5, 4, 201);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (106, 6, 2, 121);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (107, 7, 3, 362);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (108, 8, 1, 221);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (109, 9, 2, 260);
-INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost) VALUES (110, 10, 5, 1202);
+INSERT INTO TB_CUSTOMER (Name) VALUES ('Ramon Valerio');
+INSERT INTO TB_CUSTOMER (Name) VALUES ('Thor');
+INSERT INTO TB_CUSTOMER (Name) VALUES ('Batman');
 GO
 
 -- Create Procedure
