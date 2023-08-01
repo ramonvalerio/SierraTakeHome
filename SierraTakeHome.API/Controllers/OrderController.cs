@@ -55,9 +55,13 @@ namespace SierraTakeHome.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
+            catch(NullReferenceException ex)
+            {
+                return NotFound();
+            }
             catch (Exception ex)
             {
-                return NotFound(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
     }

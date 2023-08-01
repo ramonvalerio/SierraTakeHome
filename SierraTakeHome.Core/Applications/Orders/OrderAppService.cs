@@ -22,19 +22,22 @@ namespace SierraTakeHome.Core.Applications.Orders
             return await _repository.Orders.GetById(id);
         }
 
-        public async Task Create(OrderCommand dto)
+        public async Task Create(OrderCommand command)
         {
-            dto.IsValid();
+            if (command == null)
+                throw new NullReferenceException("Argument reference is null.");
 
-            var product = await _repository.Products.GetById(dto.ProductId);
+            command.IsValid();
+
+            var product = await _repository.Products.GetById(command.ProductId);
 
             if (product == null)
-                throw new Exception($"ProductId {dto.ProductId} not found.");
+                throw new Exception($"ProductId {command.ProductId} not found.");
 
             var order = new Order {
-                CustomerId = dto.CustomerId,
-                ProductId = dto.ProductId,
-                Quantity = dto.Quantity
+                CustomerId = command.CustomerId,
+                ProductId = command.ProductId,
+                Quantity = command.Quantity
             };
 
             await _repository.Orders.Create(order);
