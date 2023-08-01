@@ -28,7 +28,7 @@ namespace SierraTakeHome.Core.Repositories
         {
             var parameters = new List<SqlParameter>
             {
-                new SqlParameter("@CustomerID", order.CustomerID),
+                new SqlParameter("@CustomerID", order.CustomerId),
                 new SqlParameter("@ProductID", order.ProductId),
                 new SqlParameter("@Quantity", order.Quantity)
             };

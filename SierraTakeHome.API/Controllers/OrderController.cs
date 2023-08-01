@@ -44,16 +44,20 @@ namespace SierraTakeHome.API.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody] OrderCommand value)
+        public async Task<ActionResult> Post([FromBody] OrderCommand value)
         {
             try
             {
                 await _appService.Create(value);
-                Ok();
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                NotFound(ex.Message);
+                return NotFound(ex.Message);
             }
         }
     }

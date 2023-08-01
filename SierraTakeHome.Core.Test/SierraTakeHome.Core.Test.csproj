@@ -23,7 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SierraTakeHome.API\SierraTakeHome.API.csproj" />
     <ProjectReference Include="..\SierraTakeHome.Core\SierraTakeHome.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\" />
   </ItemGroup>
 
 </Project>

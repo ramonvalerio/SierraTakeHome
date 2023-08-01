@@ -24,13 +24,15 @@ namespace SierraTakeHome.Core.Applications.Orders
 
         public async Task Create(OrderCommand dto)
         {
+            dto.IsValid();
+
             var product = await _repository.Products.GetById(dto.ProductId);
 
             if (product == null)
                 throw new Exception($"ProductId {dto.ProductId} not found.");
 
             var order = new Order {
-                CustomerID = dto.CustomerID,
+                CustomerId = dto.CustomerId,
                 ProductId = dto.ProductId,
                 Quantity = dto.Quantity
             };

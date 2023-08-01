@@ -1,16 +1,19 @@
-namespace SierraTakeHome.Core.Test.Products
+namespace SierraTakeHome.Core.Test.ErrorHandling
 {
     public class ProductTest
     {
         [Fact]
-        public void Create_Product()
-        {
-            Assert.True(true);
-        }
-
-        [Fact]
         public void Validate_Product()
         {
+            // Arrange
+
+
+            // Act
+
+
+            // Assert
+
+
             Assert.True(true);
         }
     }
