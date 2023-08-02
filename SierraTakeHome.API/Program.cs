@@ -60,6 +60,19 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<DataContext>();
 builder.Services.AddScoped<DesignTimeDbContextFactory>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            // Permitir qualquer origem, método e cabeçalho para a demonstração.
+            // Você pode ajustar isso para ser mais restritivo se necessário.
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
+
 var app = builder.Build();
 
 app.UseAuthentication();
@@ -70,6 +83,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("AllowSpecificOrigin");
 }
 
 app.UseHttpsRedirection();
