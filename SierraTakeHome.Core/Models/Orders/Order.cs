@@ -10,6 +10,6 @@
 
         public int Quantity { get; set; }
 
-        public int TotalCost { get; set; }
+        public double TotalCost { get; set; }
     }
 }

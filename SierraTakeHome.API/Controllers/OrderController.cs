@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SierraTakeHome.Core.Applications.Orders;
 using SierraTakeHome.Core.Models.Orders;
 
@@ -44,6 +45,7 @@ namespace SierraTakeHome.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> Post([FromBody] OrderCommand value)
         {
             try

@@ -23,7 +23,7 @@ namespace SierraTakeHome.API.Controllers
                 var result = await _appService.GetAll();
                 return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return NotFound();
             }
