@@ -4,11 +4,16 @@ GO
 USE SierraTakeHome_DB
 GO
 
--- Create Procedure
+-- Drop the procedure if it exists
+DROP PROCEDURE IF EXISTS CreateOrder
+GO
+
+-- Create the procedure
 CREATE PROCEDURE CreateOrder
     @CustomerID INT,
     @ProductID INT,
-    @Quantity INT
+    @Quantity INT,
+    @OrderID INT OUTPUT
 AS
 BEGIN
     DECLARE @Price FLOAT
@@ -23,6 +28,8 @@ BEGIN
     -- Insert an order
     INSERT INTO TB_ORDER (CustomerID, ProductId, Quantity, TotalCost)
     VALUES (@CustomerID, @ProductID, @Quantity, @TotalCost)
+    
+    -- Get the ID of the inserted order
+    SET @OrderID = SCOPE_IDENTITY()
 END
 GO
-

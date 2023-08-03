@@ -6,6 +6,6 @@ namespace SierraTakeHome.Core.Applications.Orders
     {
         Task<List<Order>> GetAll();
         Task<Order> GetById(int id);
-        Task Create(OrderCommand dto);
+        Task<Order> Create(OrderCommand dto);
     }
 }

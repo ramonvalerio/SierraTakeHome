@@ -2,6 +2,7 @@
 using SierraTakeHome.Core.Data;
 using SierraTakeHome.Core.Models.Orders;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace SierraTakeHome.Core.Repositories
 {
@@ -23,27 +24,33 @@ namespace SierraTakeHome.Core.Repositories
         {
             return await _context.Orders.SingleOrDefaultAsync(x => x.Id == id);
         }
-        
+
         public async Task<int> Create(Order order)
         {
-            var parameters = new List<SqlParameter>
+            var orderIdParam = new SqlParameter("@OrderID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            var parameters = new object[]
             {
                 new SqlParameter("@CustomerID", order.CustomerId),
                 new SqlParameter("@ProductID", order.ProductId),
-                new SqlParameter("@Quantity", order.Quantity)
+                new SqlParameter("@Quantity", order.Quantity),
+                orderIdParam
             };
 
             try
             {
-                var result = await _context.Database.ExecuteSqlRawAsync("EXEC CreateOrder @CustomerID, @ProductID, @Quantity",
-                parameters);
+                await _context.Database.ExecuteSqlRawAsync("EXEC CreateOrder @CustomerID, @ProductID, @Quantity, @OrderID OUTPUT", parameters);
 
-                return result;
+                return (int)orderIdParam.Value; // Return the value of the output parameter
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
     }
 }

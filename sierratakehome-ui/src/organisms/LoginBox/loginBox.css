@@ -1,0 +1,22 @@
+.org-loginbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 300px;
+  padding: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.org-loginbox > h2 {
+  color: #21376d;
+}
+
+.org-loginbox > .form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}

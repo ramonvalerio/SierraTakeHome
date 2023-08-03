@@ -1,0 +1,18 @@
+.tp-order {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding-top: 140px;
+}
+
+.tp-order > *:first-of-type {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.tp-order > *:last-of-type {
+  max-width: 1600px;
+  width: 100%;
+}

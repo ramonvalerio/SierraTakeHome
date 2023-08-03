@@ -46,12 +46,12 @@ namespace SierraTakeHome.API.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<ActionResult> Post([FromBody] OrderCommand value)
+        public async Task<ActionResult<Order>> Post([FromBody] OrderCommand value)
         {
             try
             {
-                await _appService.Create(value);
-                return Ok();
+                var result = await _appService.Create(value);
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {

@@ -22,7 +22,7 @@ namespace SierraTakeHome.Core.Applications.Orders
             return await _repository.Orders.GetById(id);
         }
 
-        public async Task Create(OrderCommand command)
+        public async Task<Order> Create(OrderCommand command)
         {
             if (command == null)
                 throw new NullReferenceException("Argument reference is null.");
@@ -40,7 +40,9 @@ namespace SierraTakeHome.Core.Applications.Orders
                 Quantity = command.Quantity
             };
 
-            await _repository.Orders.Create(order);
+            var orderId = await _repository.Orders.Create(order);
+
+            return await _repository.Orders.GetById(orderId);
         }
     }
 }

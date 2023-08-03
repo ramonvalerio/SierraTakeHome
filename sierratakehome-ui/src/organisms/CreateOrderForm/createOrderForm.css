@@ -1,0 +1,45 @@
+.org-createorderform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0px;
+  border-radius: 8px;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.org-createorderform > .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 1600px;
+}
+
+.org-createorderform > .wrapper > .input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.org-createorderform > .wrapper > .input > input {
+  padding: 8px 0;
+  flex: 1;
+}
+
+.org-createorderform > .wrapper > button {
+  background-color: #f79e2b;
+  color: #21376d;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  border-radius: 24px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.org-createorderform > .wrapper > button:hover {
+  background-color: #21376d;
+  color: white;
+}
