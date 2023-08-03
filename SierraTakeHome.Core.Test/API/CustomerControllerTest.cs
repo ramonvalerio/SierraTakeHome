@@ -26,7 +26,7 @@ namespace SierraTakeHome.Core.Test.API
         }
 
         [Fact]
-        public void GetAll_Customers()
+        public async Task GetAll_Customers()
         {
             // Arrange
             var appService = new CustomerAppService(_unitOfWork);
@@ -37,14 +37,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Customers.GetAll()).Returns(products);
 
             // Act
-            var result = controller.Get();
+            var result = await controller.Get();
 
             // Assert
-            result.Result.Result.Should().BeOfType<OkObjectResult>();
+            result.Result.Should().BeOfType<OkObjectResult>();
         }
 
         [Fact]
-        public void GetById_Customer()
+        public async Task GetById_Customer()
         {
             // Arrange
             var appService = new CustomerAppService(_unitOfWork);
@@ -56,10 +56,10 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Customers.GetById(customerId)).Returns(customer);
 
             // Act
-            var result = controller.Get();
+            var result = await controller.Get();
 
             // Assert
-            result.Result.Result.Should().BeOfType<OkObjectResult>();
+            result.Result.Should().BeOfType<OkObjectResult>();
         }
     }
 }

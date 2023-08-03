@@ -21,7 +21,7 @@ namespace SierraTakeHome.Core.Test.API
         }
 
         [Fact]
-        public void GetAll_Orders()
+        public async Task GetAll_Orders()
         {
             // Arrange
             var appService = new OrderAppService(_unitOfWork);
@@ -32,14 +32,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Orders.GetAll()).Returns(orders);
 
             // Act
-            var result = controller.Get();
+            var result = await controller.Get();
 
             // Assert
-            result.Result.Result.Should().BeOfType<OkObjectResult>();
+            result.Result.Should().BeOfType<OkObjectResult>();
         }
 
         [Fact]
-        public void GetById_Order()
+        public async Task GetById_Order()
         {
             // Arrange
             var appService = new OrderAppService(_unitOfWork);
@@ -51,14 +51,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Orders.GetById(orderId)).Returns(order);
 
             // Act
-            var result = controller.Get();
+            var result = await controller.Get();
 
             // Assert
-            result.Result.Result.Should().BeOfType<OkObjectResult>();
+            result.Result.Should().BeOfType<OkObjectResult>();
         }
 
         [Fact]
-        public void CreateOrder_Valid_Command()
+        public async Task CreateOrder_Valid_Command()
         {
             // Arrange
             var appService = new OrderAppService(_unitOfWork);
@@ -73,14 +73,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Orders.Create(order)).Returns(newOrderId);
 
             // Act
-            var result = controller.Post(command);
+            var result = await controller.Post(command);
 
             // Assert
-            result.Result.Should().BeOfType<OkResult>();
+            result.Result.Should().BeOfType<OkObjectResult>();
         }
 
         [Fact]
-        public void CreateOrder_InvalidProductId_Command()
+        public async Task CreateOrder_InvalidProductId_Command()
         {
             // Arrange
             var appService = new OrderAppService(_unitOfWork);
@@ -95,14 +95,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Orders.Create(order)).Returns(newOrderId);
 
             // Act
-            var result = controller.Post(command);
+            var result = await controller.Post(command);
 
             // Assert
             result.Result.Should().BeOfType<BadRequestObjectResult>();
         }
 
         [Fact]
-        public void CreateOrder_InvalidNegativeQuantity_Command()
+        public async Task CreateOrder_InvalidNegativeQuantity_Command()
         {
             // Arrange
             var appService = new OrderAppService(_unitOfWork);
@@ -117,14 +117,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Orders.Create(order)).Returns(newOrderId);
 
             // Act
-            var result = controller.Post(command);
+            var result = await controller.Post(command);
 
             // Assert
             result.Result.Should().BeOfType<BadRequestObjectResult>();
         }
 
         [Fact]
-        public void CreateOrder_InvalidZeroQuantity_Command()
+        public async Task CreateOrder_InvalidZeroQuantity_Command()
         {
             // Arrange
             var appService = new OrderAppService(_unitOfWork);
@@ -139,14 +139,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Orders.Create(order)).Returns(newOrderId);
 
             // Act
-            var result = controller.Post(command);
+            var result = await controller.Post(command);
 
             // Assert
             result.Result.Should().BeOfType<BadRequestObjectResult>();
         }
 
         [Fact]
-        public void CreateOrder_Null_Command()
+        public async Task CreateOrder_Null_Command()
         {
             // Arrange
             var appService = new OrderAppService(_unitOfWork);
@@ -158,7 +158,7 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Orders.Create(order)).Returns(newOrderId);
 
             // Act
-            var result = controller.Post(null);
+            var result = await controller.Post(null);
 
             // Assert
             result.Result.Should().BeOfType<NotFoundResult>();

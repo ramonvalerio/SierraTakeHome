@@ -21,7 +21,7 @@ namespace SierraTakeHome.Core.Test.API
         }
 
         [Fact]
-        public void GetAll_Products()
+        public async Task GetAll_Products()
         {
             // Arrange
             var appService = new ProductAppService(_unitOfWork);
@@ -32,14 +32,14 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Products.GetAll()).Returns(products);
 
             // Act
-            var result = controller.Get();
+            var result = await controller.Get();
 
             // Assert
-            result.Result.Result.Should().BeOfType<OkObjectResult>();
+            result.Result.Should().BeOfType<OkObjectResult>();
         }
 
         [Fact]
-        public void GetById_Product()
+        public async Task GetById_Product()
         {
             // Arrange
             var appService = new ProductAppService(_unitOfWork);
@@ -51,10 +51,10 @@ namespace SierraTakeHome.Core.Test.API
             A.CallTo(() => _unitOfWork.Products.GetById(productId)).Returns(product);
 
             // Act
-            var result = controller.Get();
+            var result = await controller.Get();
 
             // Assert
-            result.Result.Result.Should().BeOfType<OkObjectResult>();
+            result.Result.Should().BeOfType<OkObjectResult>();
         }
 
         public void Dispose()
