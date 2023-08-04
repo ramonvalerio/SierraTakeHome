@@ -17,20 +17,8 @@ This repository contains a simplified order management system developed using C#
    docker compose build
    docker compose up
    ```
-### 2. Install Entity Framework CLI
-```bash
-dotnet tool install --global dotnet-ef
-```
 
-### 3. Update Databas
-Still in the directory SierraTakeHome.Core, execute:
-```bash
-dotnet ef database update
-```
->Note: This will create a Migrations folder and classes needed to create and update the database based on the connection string.
-Also will update the database 'SierraTakeHome_DB' creating the tables.
-
-### 4. Configure SQL Server Connection
+### 2. Configure SQL Server Connection
 ```bash
 Server: localhost,1433
 Authentication type: SQL Login
@@ -39,16 +27,13 @@ Password: Test@123
 Database: SierraTakeHome_DB
 ```
 
-### 5. Initialize Database
-Copy the content in the script file on the directory scripts/init.sql and execute it on SQL Management Studio or Azure Studio to create the procedure called CreateOrder and insert initial data.
-
-### 6. Access the Application
+### 3. Access the Application
 Copy the localhost URL from the Docker container to run in the browser:
 ```bash
 http://localhost:3500/swagger
 ```
 
-### 7. Register a User
+### 4. Register a User
 In the Auth section, open POST/Register and input in the Request body:
 ```bash
 {
@@ -57,7 +42,7 @@ In the Auth section, open POST/Register and input in the Request body:
 }
 ```
 
-### 8. Login
+### 5. Login
 In the Auth section, open POST/Login and input:
 ```bash
 {
@@ -67,7 +52,7 @@ In the Auth section, open POST/Login and input:
 ```
 >Note: If your username and password were found in the database, you would receive a Token.
 
-#### 9. Use Token
+#### 6. Use Token
 Copy this token to use on a tool to create an HttpPost Request using the token on 'Postman' or something similar.
 
 ### License
