@@ -22,21 +22,15 @@ This repository contains a simplified order management system developed using C#
 dotnet tool install --global dotnet-ef
 ```
 
-### 3. Create Initial Migration:
-Go to the directory SierraTakeHome.Core and execute:
-```bash
-dotnet ef migrations add Initial
-```
->Note: This will create a Migrations folder and classes needed to create and update the database based on the connection string.
-
-### 4. Update Databas
+### 3. Update Databas
 Still in the directory SierraTakeHome.Core, execute:
 ```bash
 dotnet ef database update
 ```
->Note: This will create a database called 'SierraTakeHome_DB' with its respective tables.
+>Note: This will create a Migrations folder and classes needed to create and update the database based on the connection string.
+Also will update the database 'SierraTakeHome_DB' creating the tables.
 
-### 5. Configure SQL Server Connection
+### 4. Configure SQL Server Connection
 ```bash
 Server: localhost,1433
 Authentication type: SQL Login
@@ -45,16 +39,16 @@ Password: Test@123
 Database: SierraTakeHome_DB
 ```
 
-### 6. Initialize Database
+### 5. Initialize Database
 Copy the content in the script file on the directory scripts/init.sql and execute it on SQL Management Studio or Azure Studio to create the procedure called CreateOrder and insert initial data.
 
-### 7. Access the Application
+### 6. Access the Application
 Copy the localhost URL from the Docker container to run in the browser:
 ```bash
 http://localhost:3500/swagger
 ```
 
-### 8. Register a User
+### 7. Register a User
 In the Auth section, open POST/Register and input in the Request body:
 ```bash
 {
@@ -63,7 +57,7 @@ In the Auth section, open POST/Register and input in the Request body:
 }
 ```
 
-### 9. Login
+### 8. Login
 In the Auth section, open POST/Login and input:
 ```bash
 {
@@ -73,7 +67,7 @@ In the Auth section, open POST/Login and input:
 ```
 >Note: If your username and password were found in the database, you would receive a Token.
 
-#### 10. Use Token
+#### 9. Use Token
 Copy this token to use on a tool to create an HttpPost Request using the token on 'Postman' or something similar.
 
 ### License
