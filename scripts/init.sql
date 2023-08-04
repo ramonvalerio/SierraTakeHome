@@ -4,10 +4,6 @@ GO
 USE SierraTakeHome_DB
 GO
 
--- Drop the procedure if it exists
-DROP PROCEDURE IF EXISTS CreateOrder
-GO
-
 -- Create the procedure
 CREATE PROCEDURE CreateOrder
     @CustomerID INT,
