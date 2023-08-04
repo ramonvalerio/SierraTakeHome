@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SierraTakeHome.Core.Applications.Orders;
-using SierraTakeHome.Core.Models.Orders;
+using SierraTakeHome.Core.Application.Orders;
+using SierraTakeHome.Core.Domain.Orders;
 
 namespace SierraTakeHome.API.Controllers
 {

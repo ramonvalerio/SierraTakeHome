@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using SierraTakeHome.Core.Data;
+using SierraTakeHome.Core.Infrastructure.Data;
 
 namespace SierraTakeHome.Core.Test.DataBase
 {

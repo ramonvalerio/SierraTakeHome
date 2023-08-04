@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SierraTakeHome.API.Models;
-using SierraTakeHome.Core.Services;
+using SierraTakeHome.Core.Infrastructure.Services;
 
 namespace SierraTakeHome.API.Controllers
 {

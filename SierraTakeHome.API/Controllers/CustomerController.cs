@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SierraTakeHome.Core.Applications.Customers;
-using SierraTakeHome.Core.Models.Customers;
+using SierraTakeHome.Core.Application.Customers;
+using SierraTakeHome.Core.Domain.Customers;
 
 namespace SierraTakeHome.API.Controllers
 {

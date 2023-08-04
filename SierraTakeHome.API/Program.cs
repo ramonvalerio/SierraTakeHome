@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using SierraTakeHome.Core.Applications.Customers;
-using SierraTakeHome.Core.Applications.Orders;
-using SierraTakeHome.Core.Applications.Products;
-using SierraTakeHome.Core.Data;
-using SierraTakeHome.Core.Models.Users;
-using SierraTakeHome.Core.Services;
+using SierraTakeHome.Core.Application.Customers;
+using SierraTakeHome.Core.Application.Orders;
+using SierraTakeHome.Core.Application.Products;
+using SierraTakeHome.Core.Domain.Users;
+using SierraTakeHome.Core.Infrastructure.Data;
+using SierraTakeHome.Core.Infrastructure.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);

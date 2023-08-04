@@ -3,9 +3,9 @@ using FakeItEasy;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using SierraTakeHome.API.Controllers;
-using SierraTakeHome.Core.Applications.Products;
-using SierraTakeHome.Core.Data;
-using SierraTakeHome.Core.Models.Products;
+using SierraTakeHome.Core.Application.Products;
+using SierraTakeHome.Core.Domain.Products;
+using SierraTakeHome.Core.Infrastructure.Data;
 
 namespace SierraTakeHome.Core.Test.API
 {
