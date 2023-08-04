@@ -4,14 +4,12 @@ services:
     image: sierratakehomeapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionString=Server=sqlserver;Database=SierraTakeHome_DB;User Id=sa;Password=Test@123;
     build:
       dockerfile: SierraTakeHome.API\Dockerfile
     ports:
       - "3500:80"
     depends_on:
       - sqlserver
-
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
@@ -20,10 +18,4 @@ services:
       - MSSQL_PID=Express
     ports:
       - "1433:1433"
-  mssqltools:
-    image: mcr.microsoft.com/mssql-tools
-    depends_on:
-      - sqlserver
-    volumes:
-      - ./scripts:/scripts
-    command: /bin/bash ./scripts/init_database.sh
+  

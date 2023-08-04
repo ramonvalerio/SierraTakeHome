@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 using SierraTakeHome.Core.Models.Customers;
 using SierraTakeHome.Core.Models.Orders;
 using SierraTakeHome.Core.Models.Products;
@@ -11,7 +13,7 @@ namespace SierraTakeHome.Core.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) 
         {
-            
+            CreateDatabaseIfNotExists();
         }
 
         public DbSet<Product> Products { get; private set; }
@@ -26,6 +28,32 @@ namespace SierraTakeHome.Core.Data
             builder.Entity<Customer>().ToTable("TB_CUSTOMER");
             builder.Entity<Order>().ToTable("TB_ORDER");
             builder.Entity<ApplicationUser>().ToTable("TB_USER");
+        }
+
+        public void CreateDatabaseIfNotExists()
+        {
+            try
+            {
+                if (!Database.GetService<IRelationalDatabaseCreator>().Exists())
+                {
+                    Database.EnsureCreated();
+                    ExecuteSqlScript("CreateOrder.sql");
+                    ExecuteSqlScript("InitData.sql");
+
+                    Database.ExecuteSqlRawAsync("EXEC InitData");
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Database Server not found.");
+            }
+        }
+
+        public void ExecuteSqlScript(string fileName)
+        {
+            string scriptPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "scripts", fileName);
+            string sqlScript = File.ReadAllText(scriptPath);
+            Database.ExecuteSqlRaw(sqlScript);
         }
     }
 }

@@ -23,4 +23,13 @@
     <ProjectReference Include="..\SierraTakeHome.Core\SierraTakeHome.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="scripts\CreateOrder.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="scripts\InitData.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

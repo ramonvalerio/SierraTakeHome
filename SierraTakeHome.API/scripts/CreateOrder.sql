@@ -1,11 +1,4 @@
-﻿CREATE DATABASE SierraTakeHome_DB
-GO
-
-USE SierraTakeHome_DB
-GO
-
--- Create the procedure
-CREATE PROCEDURE CreateOrder
+﻿CREATE PROCEDURE CreateOrder
     @CustomerID INT,
     @ProductID INT,
     @Quantity INT,
@@ -28,4 +21,3 @@ BEGIN
     -- Get the ID of the inserted order
     SET @OrderID = SCOPE_IDENTITY()
 END
-GO

@@ -58,7 +58,6 @@ builder.Services.AddScoped<IOrderAppService, OrderAppService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<DataContext>();
-builder.Services.AddScoped<DesignTimeDbContextFactory>();
 
 builder.Services.AddCors(options =>
 {
