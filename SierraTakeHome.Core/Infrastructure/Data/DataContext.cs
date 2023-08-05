@@ -6,6 +6,7 @@ using SierraTakeHome.Core.Domain.Customers;
 using SierraTakeHome.Core.Domain.Orders;
 using SierraTakeHome.Core.Domain.Products;
 using SierraTakeHome.Core.Domain.Users;
+using SierraTakeHome.Core.Infrastructure.Logging;
 
 namespace SierraTakeHome.Core.Infrastructure.Data
 {
@@ -19,6 +20,7 @@ namespace SierraTakeHome.Core.Infrastructure.Data
         public DbSet<Product> Products { get; private set; }
         public DbSet<Customer> Customers { get; private set; }
         public DbSet<Order> Orders { get; private set; }
+        public DbSet<Log> Logs { get; private set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -28,6 +30,7 @@ namespace SierraTakeHome.Core.Infrastructure.Data
             builder.Entity<Customer>().ToTable("TB_CUSTOMER");
             builder.Entity<Order>().ToTable("TB_ORDER");
             builder.Entity<ApplicationUser>().ToTable("TB_USER");
+            builder.Entity<Log>().ToTable("TB_LOGS");
         }
 
         public void CreateDatabaseIfNotExists()
