@@ -27,13 +27,14 @@ Password: Test@123
 Database: SierraTakeHome_DB
 ```
 
-### 3. Access the Application
+## How to Run using Postman
+### 1. Open Swagger to check the endpoints
 Copy the localhost URL from the Docker container to run in the browser:
 ```bash
 http://localhost:3500/swagger
 ```
 
-### 4. Register a User
+### 2. Register an User
 In the Auth section, open POST/Register and input in the Request body:
 ```bash
 {
@@ -42,7 +43,7 @@ In the Auth section, open POST/Register and input in the Request body:
 }
 ```
 
-### 5. Login
+### 3. Login
 In the Auth section, open POST/Login and input:
 ```bash
 {
@@ -52,8 +53,57 @@ In the Auth section, open POST/Login and input:
 ```
 >Note: If your username and password were found in the database, you would receive a Token.
 
-#### 6. Use Token
+#### 4. Use Token
 Copy this token to use on a tool to create an HttpPost Request using the token on 'Postman' or something similar.
+
+#### 5. Create a Post Request to Create Order
+```bash
+POST:
+http://localhost:3500/Order
+```
+```bash
+Authorization:
+Type: Bearer Token
+Token: "past your token here"
+```
+```bash
+Headers:
+Key: Authorization / Value: "past your token here"
+Key: Content-Type / Value: application/json
+```
+```bash
+Body/Raw:
+{
+  "customerId": 2,
+  "productId": 5,
+  "quantity": 10
+}
+```
+>Note: Just an example template to test it!
+Currently, available 5 customers ID(1, 2, 3, 4, 5) and 5 products ID(1, 2, 3, 4, 5).
+
+## How to Run using UI
+
+### 1. Access the UI
+Copy the localhost URL from the Docker container to run in the browser:
+```bash
+http://localhost:3000
+```
+
+### 2. Register a User
+```bash
+http://localhost:3000/register
+```
+>Note: The password need to have at least 8 characters, 1 uppercase, 1 alphanumeric.
+
+### 3. Login
+```bash
+http://localhost:3000/login
+```
+>Note: If the login be authenticated you will receive a token to acess the Order page.
+
+### 4. Create an Order
+>Note: Currently, available 5 customers ID(1, 2, 3, 4, 5) and 5 products ID(1, 2, 3, 4, 5).
 
 ### License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
