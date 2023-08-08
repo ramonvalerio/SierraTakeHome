@@ -1,11 +1,23 @@
 ﻿version: '3'
 services:
-  sierratakehomeapi:
-    image: sierratakehomeapi
+  ui:
+    image: sierratakehome-ui
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     build:
-      dockerfile: Dockerfile
+      context: ./SierraTakeHome-ui
+      dockerfile: ../dockerfiles/ui/Dockerfile
+    ports:
+      - "3000:5173"
+    depends_on:
+      - api
+  api:
+    image: sierratakehome-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/api/Dockerfile
     ports:
       - "3500:80"
     depends_on:

@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["SierraTakeHome.API/SierraTakeHome.API.csproj", "SierraTakeHome.API/"]
-COPY ["SierraTakeHome.Core/SierraTakeHome.Core.csproj", "SierraTakeHome.Core/"]
+COPY ["../../SierraTakeHome.API/SierraTakeHome.API.csproj", "SierraTakeHome.API/"]
+COPY ["../../SierraTakeHome.Core/SierraTakeHome.Core.csproj", "SierraTakeHome.Core/"]
 RUN dotnet restore "SierraTakeHome.API/SierraTakeHome.API.csproj"
 COPY . .
 WORKDIR "/src/SierraTakeHome.API"
