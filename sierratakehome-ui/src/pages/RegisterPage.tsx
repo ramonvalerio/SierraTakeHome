@@ -1,10 +1,10 @@
 import { useReducer } from "react";
 import RegisterTemplate from "../templates/RegisterTemplate/RegisterTemplate";
-import LoginReducer from "../reducers/LoginReducer/LoginReducer";
-import { LoginInitialState } from "../reducers/LoginReducer/LoginState";
+import RegisterReducer from "../reducers/RegisterReducer/RegisterReducer";
+import { RegisterInitialState } from "../reducers/RegisterReducer/RegisterState";
 
 export default () => {
-  const [state, dispatch] = useReducer(LoginReducer, LoginInitialState);
+  const [state, dispatch] = useReducer(RegisterReducer, RegisterInitialState);
   return (
     <RegisterTemplate
       state={ state }
