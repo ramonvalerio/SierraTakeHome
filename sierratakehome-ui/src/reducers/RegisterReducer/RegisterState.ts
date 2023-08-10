@@ -1,5 +1,3 @@
-import { RegisterState } from "./RegisterState";
-
 export interface RegisterState {
   username: string;
   password: string;
